@@ -13,19 +13,19 @@ public class PostgreConnUtils {
      String dbName = "postgres";
      String userName = "postgres";
      String password = "abc123";
-     return getMySQLConnection(hostName, dbName, userName, password);
+     return getPostgresConnection(hostName, dbName, userName, password);
  }
   
- public static Connection getMySQLConnection(String hostName, String dbName,
+ public static Connection getPostgresConnection(String hostName, String dbName,
          String userName, String password) throws SQLException,
          ClassNotFoundException {
     
-     Class.forName("com.mysql.jdbc.Driver");
+     Class.forName("org.postgresql.Driver");
   
      // URL Connection for MySQL:
      // Example: 
      // jdbc:mysql://localhost:3306/simplehr
-     String connectionURL = "jdbc:mysql://" + hostName + ":3306/" + dbName;
+     String connectionURL = "jdbc:postgresql://" + hostName + ":5432/" + dbName;
   
      Connection conn = DriverManager.getConnection(connectionURL, userName,
              password);
